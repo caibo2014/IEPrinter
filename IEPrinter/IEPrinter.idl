@@ -16,6 +16,7 @@ import "ocidl.idl";
 	pointer_default(unique)
 ]
 interface ICPrinter : IDispatch{
+	[id(1)] HRESULT print([in] LONG printMode, [out, retval] BSTR* result);
 };
 
 [
