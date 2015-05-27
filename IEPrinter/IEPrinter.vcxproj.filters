@@ -31,6 +31,9 @@
     <ClCompile Include="IEPrinter_i.c">
       <Filter>生成的文件</Filter>
     </ClCompile>
+    <ClCompile Include="CPrinter.cpp">
+      <Filter>源文件</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="stdafx.h">
@@ -48,6 +51,9 @@
     <ClInclude Include="IEPrinter_i.h">
       <Filter>生成的文件</Filter>
     </ClInclude>
+    <ClInclude Include="CPrinter.h">
+      <Filter>头文件</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="IEPrinter.rc">
@@ -64,10 +70,19 @@
     <None Include="IEPrinter.def">
       <Filter>源文件</Filter>
     </None>
+    <None Include="CPrinter.htm" />
+    <None Include="CPrinter.rgs">
+      <Filter>资源文件</Filter>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <Midl Include="IEPrinter.idl">
       <Filter>源文件</Filter>
     </Midl>
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="CPrinter.bmp">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>

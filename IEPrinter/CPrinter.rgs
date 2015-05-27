@@ -1,0 +1,32 @@
+HKCR
+{
+	IEPrinterX.1 = s 'CPrinter Class'
+	{
+		CLSID = s '{2D0EB3C4-48BA-4692-AD40-8D0EAFDCDA88}'
+	}
+	IEPrinterX = s 'CPrinter Class'
+	{		
+		CurVer = s 'IEPrinterX.1'
+	}
+	NoRemove CLSID
+	{
+		ForceRemove {2D0EB3C4-48BA-4692-AD40-8D0EAFDCDA88} = s 'CPrinter Class'
+		{
+			ProgID = s 'IEPrinterX.1'
+			VersionIndependentProgID = s 'IEPrinterX'
+			ForceRemove Programmable
+			InprocServer32 = s '%MODULE%'
+			{
+				val ThreadingModel = s 'Apartment'
+			}
+			ForceRemove Control
+			ForceRemove 'ToolboxBitmap32' = s '%MODULE%, 106'
+			MiscStatus = s '0'
+			{
+			    '1' = s '%OLEMISC%'
+			}
+			TypeLib = s '{558F02C0-CB75-4880-9456-8DE19D999A74}'
+			Version = s '1.0'
+		}
+	}
+}

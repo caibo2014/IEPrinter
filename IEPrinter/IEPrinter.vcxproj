@@ -112,6 +112,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="CPrinter.cpp" />
     <ClCompile Include="dllmain.cpp">
       <CompileAsManaged Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">false</CompileAsManaged>
       <PrecompiledHeader Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
@@ -135,6 +136,7 @@
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="CPrinter.h" />
     <ClInclude Include="dllmain.h" />
     <ClInclude Include="IEPrinter_i.h" />
     <ClInclude Include="Resource.h" />
@@ -148,11 +150,18 @@
     <Text Include="ReadMe.txt" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="CPrinter.htm">
+      <DeploymentContent>true</DeploymentContent>
+    </None>
+    <None Include="CPrinter.rgs" />
     <None Include="IEPrinter.def" />
     <None Include="IEPrinter.rgs" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="IEPrinter.idl" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="CPrinter.bmp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

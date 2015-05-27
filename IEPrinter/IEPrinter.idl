@@ -4,8 +4,19 @@
 // 此文件将由 MIDL 工具处理以
 // 产生类型库(IEPrinter.tlb)和封送处理代码。
 
+#include "olectl.h"
 import "oaidl.idl";
 import "ocidl.idl";
+
+[
+	object,
+	uuid(545692F7-9F5E-4547-9C17-BE9AEBC45662),
+	dual,
+	nonextensible,
+	pointer_default(unique)
+]
+interface ICPrinter : IDispatch{
+};
 
 [
 	uuid(558F02C0-CB75-4880-9456-8DE19D999A74),
@@ -14,5 +25,13 @@ import "ocidl.idl";
 library IEPrinterLib
 {
 	importlib("stdole2.tlb");
+	[
+		uuid(2D0EB3C4-48BA-4692-AD40-8D0EAFDCDA88),		
+		control
+	]
+	coclass CPrinter
+	{
+		[default] interface ICPrinter;
+	};
 };
 
