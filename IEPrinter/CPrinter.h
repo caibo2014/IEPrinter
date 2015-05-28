@@ -162,6 +162,7 @@ public:
 	void FinalRelease()
 	{
 	}
+	STDMETHOD(print)(LONG printMode, BSTR* result);
 };
 
 OBJECT_ENTRY_AUTO(__uuidof(CPrinter), CCPrinter)
