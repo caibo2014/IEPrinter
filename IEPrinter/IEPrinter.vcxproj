@@ -160,7 +160,7 @@
     <None Include="CPrinter.rgs" />
     <None Include="IEPrinter.def" />
     <None Include="IEPrinter.rgs" />
-    <None Include="PrintTemplate.htm">
+    <None Include="res\PrintTemplate.htm">
       <DeploymentContent>true</DeploymentContent>
     </None>
   </ItemGroup>

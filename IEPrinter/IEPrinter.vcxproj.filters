@@ -86,7 +86,7 @@
     <None Include="CPrinter.rgs">
       <Filter>资源文件</Filter>
     </None>
-    <None Include="PrintTemplate.htm" />
+    <None Include="res\PrintTemplate.htm" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="IEPrinter.idl">
