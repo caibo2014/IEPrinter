@@ -40,7 +40,7 @@
 #ui
 {
     height:60px;
-    background-color:red;
+    background-color:#cccccc;
     margin:0px;
     padding;0px; 
 }
@@ -375,17 +375,18 @@ function test(){
     <IE:HEADERFOOTER ID="headfoot"/>
 
     <DIV ID="ui">
-        <BR>
+		<BR>
+		&nbsp;&nbsp;
+		<image src="print.png" onmouseup="DoPrintFromPreview()">
         &nbsp;&nbsp;
-        <INPUT TYPE="BUTTON" VALUE="Page Setup" onmouseup="DoPageSetup()">
-        &nbsp;&nbsp;&nbsp;&nbsp;
-        <INPUT TYPE="BUTTON" VALUE="Zoom In" onmouseup="Zoomer('in')">
+		<image src="setting.png" onmouseup="DoPageSetup()">
+        &nbsp;&nbsp;
+        <image src="zoomOut.png" onmouseup="Zoomer('in')">
         &nbsp;
-        <INPUT ID="zoomnumber" TYPE="TEXT" VALUE="50" SIZE="3" MAXLENGTH="4" onkeyup="Zoomer('amount')">%
-        &nbsp;
-        <INPUT TYPE="BUTTON" VALUE="Zoom Out" onmouseup="Zoomer('out')">
+		<image src="zoomIn.png" onmouseup="Zoomer('out')">
+		&nbsp;
+		<!--<INPUT ID="zoomnumber"  TYPE="TEXT" VALUE="50" SIZE="3" MAXLENGTH="4" onkeyup="Zoomer('amount')">%-->
         &nbsp;&nbsp;&nbsp;&nbsp;
-        <INPUT TYPE="BUTTON" VALUE="Print" onmouseup="DoPrintFromPreview()">
     </DIV>
 
     <DIV ID="pagecontainer">
