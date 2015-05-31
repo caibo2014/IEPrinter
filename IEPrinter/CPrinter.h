@@ -3,6 +3,8 @@
 #include "resource.h"       // 主符号
 #include <atlctl.h>
 #include "IEPrinter_i.h"
+#include "LocalPrinter.h"
+#include "PrintTemplate.h"
 
 #if defined(_WIN32_WCE) && !defined(_CE_DCOM) && !defined(_CE_ALLOW_SINGLE_THREADED_OBJECTS_IN_MTA)
 #error "Windows CE 平台(如不提供完全 DCOM 支持的 Windows Mobile 平台)上无法正确支持单线程 COM 对象。定义 _CE_ALLOW_SINGLE_THREADED_OBJECTS_IN_MTA 可强制 ATL 支持创建单线程 COM 对象实现并允许使用其单线程 COM 对象实现。rgs 文件中的线程模型已被设置为“Free”，原因是该模型是非 DCOM Windows CE 平台支持的唯一线程模型。"
@@ -31,7 +33,10 @@ class ATL_NO_VTABLE CCPrinter :
 	public CComControl<CCPrinter>
 {
 public:
-
+	//获取启用计划在对象和容器之间的命令接口
+	IOleCommandTarget* getIOleCommandTarget();
+	//执行打印命令
+	bool doPrint(IOleCommandTarget* target, string printTemplatePathStr, bool printOrPreview = true, bool dontPromptUser = true);
 
 	CCPrinter()
 	{
