@@ -37,5 +37,7 @@ string CPrintTemplate::getPath(string filename){
 }
 
 string CPrintTemplate::getPath(string elementId, string filename){
-	return "";
+	//返回空串的时候，会使用IE默认的打印模板
+	//return "";
+	return "res://IEPrinter.dll/#201";
 }
