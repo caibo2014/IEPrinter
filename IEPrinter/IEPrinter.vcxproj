@@ -76,6 +76,12 @@
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <RegisterOutput>true</RegisterOutput>
     </Link>
+    <PreBuildEvent>
+      <Command>regsvr32  $(TargetPath)</Command>
+    </PreBuildEvent>
+    <PreBuildEvent>
+      <Message>regsvr32  $(TargetPath)</Message>
+    </PreBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <ClCompile>
