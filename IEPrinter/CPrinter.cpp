@@ -43,7 +43,7 @@ IOleCommandTarget* CCPrinter::getIOleCommandTarget(){
 }
 
 
-bool CCPrinter::doPrint(IOleCommandTarget* target, string printTemplatePathStr, bool printOrPreview = true, bool dontPromptUser = true){
+bool CCPrinter::doPrint(IOleCommandTarget* target, string printTemplatePathStr, bool printOrPreview , bool dontPromptUser){
 	
 	//将路径解析为宽字符
 	std::wstring widestr = std::wstring(printTemplatePathStr.begin(), printTemplatePathStr.end());
@@ -69,13 +69,11 @@ bool CCPrinter::doPrint(IOleCommandTarget* target, string printTemplatePathStr, 
 		nCmdexecopt = OLECMDEXECOPT_PROMPTUSER;
 	}
 
-	VARIANT vTemplatePath;
-	V_VT(&vTemplatePath) = VT_BSTR;
-	V_BSTR(&vTemplatePath) = SysAllocString(printTemplatePath);
+	CComVariant vPTPath = printTemplatePathStr.c_str();
 	pCmdTarg->Exec(&CGID_MSHTML,
 		nCmdID,
 		nCmdexecopt,
-		&vTemplatePath,
+		&vPTPath,
 		NULL);
 	return true;
 }
