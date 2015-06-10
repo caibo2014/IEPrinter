@@ -175,6 +175,10 @@
   </ItemGroup>
   <ItemGroup>
     <Image Include="CPrinter.bmp" />
+    <Image Include="res\print.png" />
+    <Image Include="res\setting.png" />
+    <Image Include="res\zoomIn.png" />
+    <Image Include="res\zoomOut.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

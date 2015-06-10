@@ -97,5 +97,17 @@
     <Image Include="CPrinter.bmp">
       <Filter>资源文件</Filter>
     </Image>
+    <Image Include="res\print.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\setting.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\zoomIn.png">
+      <Filter>资源文件</Filter>
+    </Image>
+    <Image Include="res\zoomOut.png">
+      <Filter>资源文件</Filter>
+    </Image>
   </ItemGroup>
 </Project>
