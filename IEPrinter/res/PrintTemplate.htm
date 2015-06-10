@@ -1,5 +1,6 @@
 <HTML XMLNS:IE>
 <HEAD>
+<title>Printer</title>
 <?IMPORT NAMESPACE="ie" IMPLEMENTATION="#default">
 <STYLE TYPE="text/css">
 .lorstyle
@@ -13,10 +14,10 @@
 .pagestyle
 { 
     background:white;
-    border-left:1 solid black;
-    border-top:1 solid black;
-    border-right:4 solid black;
-    border-bottom:4 solid black;
+    border-left:1px solid black;
+    border-top:1px solid black;
+    border-right:4px solid black;
+    border-bottom:4px solid black;
     width:8.5in;
     height:11in;
     margin:10px;
@@ -42,7 +43,7 @@
     height:60px;
     background-color:#cccccc;
     margin:0px;
-    padding;0px; 
+    padding:0px; 
 }
 #zoomcontainer
 {
@@ -54,7 +55,7 @@
 {
    width:100%;
    overflow:auto; 
-   border:'thin threedhighlight inset'; 
+   border:thin threedhighlight inset; 
    background:threedshadow;
 
 }
@@ -368,7 +369,7 @@ function test(){
 }
 
 </SCRIPT>
-<HEAD>
+</HEAD>
 <BODY ONLOAD="Init()" ONRESIZE="ResizeApp()" SCROLL="no">
 
     <IE:TEMPLATEPRINTER ID="printer"/>
