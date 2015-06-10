@@ -87,6 +87,8 @@
       <Filter>资源文件</Filter>
     </None>
     <None Include="res\PrintTemplate.htm" />
+    <None Include="res\preview.htm" />
+    <None Include="res\preview.js" />
   </ItemGroup>
   <ItemGroup>
     <Midl Include="IEPrinter.idl">

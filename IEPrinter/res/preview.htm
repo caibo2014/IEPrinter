@@ -1,0 +1,264 @@
+﻿
+<html xmlns:ie>
+<head>
+<?import namespace="ie" implementation="#default">
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<meta http-equiv="MSThemeCompatible" content="Yes">
+<title>打印预览</title>
+<style>
+.divPage
+{
+position: absolute;
+top: -20000px;
+border-left: 1pt solid black;
+border-top: 1pt solid black;
+border-right: 4pt solid black;
+border-bottom: 4pt solid black;
+}
+.page
+{
+background: white;
+width: 8.5in;
+height: 11in;
+margin: 0px;
+overflow: hidden;
+}
+.mRect
+{
+position: absolute;
+margin: 1in;
+width: 6.5in;
+height: 9in;
+border: none;
+overflow : hidden;
+}
+.mRectAtPage
+{
+overflow : hidden;
+}
+.mRectAtPageLeft
+{
+overflow : hidden;
+}
+.mRectAtPageRight
+{
+overflow : hidden;
+}
+.mRectAtPageFirst
+{
+overflow : hidden;
+}
+.mRectUserOverride
+{
+overflow : hidden;
+}
+.divHead
+{
+position: absolute;
+overflow: hidden;
+top: 0in;
+left: 0in;
+width: 8.5in;
+}
+.divHeadAtPage
+{
+overflow: hidden;
+}
+.divHeadAtPageLeft
+{
+overflow: hidden;
+}
+.divHeadAtPageRight
+{
+overflow: hidden;
+}
+.divHeadAtPageFirst
+{
+overflow: hidden;
+}
+.divHeadUserOverride
+{
+overflow: hidden;
+}
+.divFoot
+{
+position: absolute;
+overflow: hidden;
+bottom: 0in;
+left: 0in;
+width: 8.5in;
+}
+.divFootAtPage
+{
+overflow: hidden;
+}
+.divFootAtPageLeft
+{
+overflow: hidden;
+}
+.divFootAtPageRight
+{
+overflow: hidden;
+}
+.divFootAtPageFirst
+{
+overflow: hidden;
+}
+.divFootUserOverride
+{
+overflow: hidden;
+}
+.THeader
+{
+border: none;
+background: white;
+color: black;
+}
+.TFooter
+{
+border: none;
+background: white;
+color: black;
+}
+.MarginAnchor
+{
+position: absolute;
+top: 0;
+left: 0;
+display: none;
+z-index: 100;
+}
+.MarginOutline
+{
+position: absolute;
+top: 0;
+left: 0;
+background: transparent;
+border:dashed 1 windowtext;
+display: none;
+z-index: 100;
+}
+BODY { overflow:hidden; padding:0; margin:0; background:threedface; }
+TD.uiPane { width: 20px; border: none; font-family: '宋体'; font-size: 9pt; vertical-align:middle; }
+TD.uiSeparator { height: 31px; border: none; padding: 0px; }
+</style>
+<script defer src="preview.js">
+</script>
+</head>
+<body onLoad="setTimeout('OnLoadBody()', 25);">
+<!-- Controls for printing -->
+<IE:TemplatePrinter id=Printer />
+<IE:HeaderFooter id=HeadFoot />
+<!-- Toolbar -->
+<div id="idDivToolbar">
+<table border=0 cellpadding=2 cellspacing=0 style="margin:0px;padding:0px;height:27px;overflow:hidden;width:100%;"><tr>
+<!-- Print button -->
+<td class="uiPane"> <input type="image" id="printimg" accesskey="p" src="printimg.png" alt="打印文档(Alt+P)" style="cursor:default;" width=35 height=27 border=0></td>
+<td class="uiSeparator" width=2><img src="divider.png" alt="" width=2 height=31 border=0 hspace=1 vspace=0></td>
+<!-- Portrait toggle -->
+<td class="uiPane"> <input type="image" id="portrait" accesskey="o" src="portrait.png" alt="纵向(Alt+O)" style="cursor:default;" width=30 height=27 border=0></td>
+<!-- Landscape toggle -->
+<td class="uiPane"> <input type="image" id="landscape" accesskey="l" src="landscape.png" alt="横向(Alt+L)" style="cursor:default;" width=34 height=27 border=0></td>
+<td class="uiSeparator" width=2><img src="divider.png" alt="" width=2 height=31 border=0 hspace=1 vspace=0></td>
+<!-- Page Setup button -->
+<td class="uiPane"> <input type="image" accesskey="u" id="settings" src="settings.png" alt="页面设置(Alt+U)" style="cursor:default;" width=31 height=27 border=0></td>
+<td class="uiSeparator" width=2><img src="divider.png" alt="" width=2 height=31 border=0 hspace=1 vspace=0></td>
+<!-- Headers/Footers toggle -->
+<td class="uiPane"> <input type="image" accesskey="e" id="headerimg" src="headerimg.png" alt="打开或关闭页眉和页脚(Alt+E)" style="cursor:default;" width=36 height=27 border=0></td>
+<td class="uiSeparator" width=2><img src="divider.png" alt="" width=2 height=31 border=0 hspace=1 vspace=0></td>
+<!-- Zoom Page Width button -->
+<td class="uiPane"> <input type="image" id="zoomWidth" accesskey="w" src="zoomwidth.png" alt="查看全角(Alt+W)" style="cursor:default;" width=35 height=27 border=0></td>
+<!-- Zoom Page button -->
+<td class="uiPane"> <input type="image" id="zoomPage" accesskey="1" src="zoompage.png" alt="查看整页(Alt+1)" style="cursor:default;" width=36 height=27 border=0></td>
+<!-- Pages dropdown -->
+<td class="uiPane">
+<select id="selectPages" accesskey="n" title="显示多页(Alt+N)" onfocus="printimg.scrollIntoView();">
+<option value="1" selected id="onePageView">1 页视图</option>
+<option value="2" id="twoPageView">2 页视图</option>
+<option value="3" id="threePageView">3 页视图</option>
+<option value="6" id="sixPageView">6 页视图</option>
+<option value="12" id="twelvePageView">12 页视图</option>
+</select>
+</td>
+<td class="uiSeparator" width=2 id="separatorFrameset" style="display:none"><img src="divider.png" alt="" width=2 height=31 border=0 hspace=1 vspace=0></td>
+<!-- Frameset control selector thing; invisible until we discover a frameset -->
+<td class="uiPane" id="cellFrameset" style="display:none" onfocus="printimg.scrollIntoView();">
+<span>
+<select id="selectFrameset" accesskey="f" title="选择内容(Alt+F)">
+<option value="0" id="idLaidOut">按屏幕所列布局打印</option>
+<option value="1" id="idSelected">仅打印选定框架</option>
+<option value="2" id="idSeparate">逐个打印所有框架</option>
+<option value="3" id="idSelection">按屏幕上的选择打印</option>
+</select>
+</span>
+</td>
+<td class="uiSeparator" width=2><img src="divider.png" alt="" width=2 height=31 border=0 hspace=1 vspace=0></td>
+<!-- Scale Level input dropdown -->
+<td class="uiPane">
+<span>
+<select id="selectScale" accesskey="s" title="更改印相大小(Alt+S)" onfocus="printimg.scrollIntoView();">
+<option value="-1" id="idScaleToFit">缩小字体填充</option>
+<option value="30" id="printsize1">30%</option>
+<option value="50" id="printsize2">50%</option>
+<option value="60" id="printsize3">60%</option>
+<option value="70" id="printsize4">70%</option>
+<option value="80" id="printsize5">80%</option>
+<option value="85" id="printsize6">85%</option>
+<option value="90" id="printsize7">90%</option>
+<option value="95" id="printsize8">95%</option>
+<option value="100" id="printsize9" selected>100%</option>
+<option value="125" id="printsize10">125%</option>
+<option value="150" id="printsize11">150%</option>
+<option value="200" id="printsize12">200%</option>
+<option value="0" id="idCustomScale">自定义</option>
+</select>
+</span>
+</td>
+<td id="cellCustomScale" class="uiPane" style="display:none"><nobr>
+<input type="text" id="inputCustomScale" title="自定义大小(Alt+T)" value="100" style="color:windowtext;" maxlength="3" size="3" accesskey="t">%
+</nobr></td>
+<td class="uiSeparator" width=2><img src="divider.png" alt="" width=2 height=31 border=0 hspace=1 vspace=0></td>
+<td width="*" align=center style="margin:0px;padding:0px;height:27px;overflow:hidden;color:highlight;"><font face="Segoe Script,Lucida Handwriting">iePrintX for QuickReport</font> [<font face="华文新魏,微软雅黑">快捷报表</font>]</td>
+<!-- Help button -->
+<td class="uiPane"> <input type="image" id="helpimg" src="helpimg.png" alt="帮助(F1)" style="cursor:default;" width=31 height=27 border=0></td>
+</tr></table>
+</div>
+<div id="idDivToolbar2" style="visibility:hidden;position:absolute;left:0px;width:100%;height:48px;overflow:hidden;text-align:center;">
+<table border=0 cellpadding=0 cellspacing=0 style="margin: 0px; padding: 0px; height:100%;"><tr>
+<!-- Page input static text and edit box -->
+<td class="uiPane">
+<span style="color:windowtext;">
+<nobr Loc>&nbsp;<id id="idTdPageXofYLocText1">页面(<u>A</u>)</id>&nbsp;
+<input type="text" id="inputPageNum" title="当前页(Alt+A)" value="1" style="height:1.5em; width:2em; color:windowtext;" accesskey="a">
+<id id="idTdPageXofYLocText2"> 共 </id>
+<span id="spanPageTotal" style="width:4em;"></span>
+&nbsp;
+</nobr>
+</span>
+</td>
+<!-- First Page [<<] button -->
+<td class="uiPane"> <input type="image" id="begin" value="leftmost" src="leftmost_disabled.png" alt="第一页(Alt+Home)" width=30 height=30 border=0></td>
+<!-- Back One Page [<] button -->
+<td class="uiPane"> <input type="image" id="prev" value="left" src="left_disabled.png" alt="上一页(Alt+←)" width=30 height=30 border=0></td>
+<!-- Forward One Page [>] button -->
+<td class="uiPane"> <input type="image" id="next" value="right" src="right_disabled.png" alt="下一页(Alt+→)" width=30 height=30 border=0></td>
+<!-- Last Page [>>] button -->
+<td class="uiPane"> <input type="image" id="end" value="rightmost" src="rightmost_disabled.png" alt="最后一页(Alt+End)" width=30 height=30 border=0></td>
+</tr></table>
+</div>
+<div id="tbCenterAlign" align="center" style="position:absolute;left:0;top:0;width:100%;height:31px;z-index:-100;background: url(tb_back.png) repeat-x;overflow:hidden;">
+<div style="width:438px;height:31px;background:url(tb_centre.png) norepeat;"></div>
+</div>
+<div id="OverflowContainer" onclick="this.focus();" onfocus="printimg.scrollIntoView();" tabindex="1" style="position:absolute; left:0; width:100%; overflow:auto; border:'thin threedhighlight inset'; background:threedshadow;">
+<div id="MasterContainer" tabindex="0" style="width:100%; position:absolute;" >
+<!-- Pages go here -->
+<div id="EmptyPage" class="divPage" style="position:absolute; left:0px; top:0px; display:none;"><div class="page">&nbsp;</div></div>
+</div>
+<div id="MarginBox" class="MarginOutline"></div>
+<img id="maLeft" class="MarginAnchor" style="cursor:col-resize" src="resize_horizontal.png" width="19" height="19" border="0" alt="调整页边距">
+<img id="maRight" class="MarginAnchor" style="cursor:col-resize" src="resize_horizontal.png" width="19" height="19" border="0" alt="调整页边距">
+<img id="maTop" class="MarginAnchor" style="cursor:row-resize" src="resize_vertical.png" width="19" height="19" border="0" alt="调整页边距">
+<img id="maBottom" class="MarginAnchor" style="cursor:row-resize" src="resize_vertical.png" width="19" height="19" border="0" alt="调整页边距">
+</div>
+</body>
+</html>
